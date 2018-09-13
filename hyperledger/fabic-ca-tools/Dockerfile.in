@@ -3,9 +3,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-FROM _NEXUS_REPO_/fabric-tools:_STABLE_TAG_
-COPY payload/fabric-ca-client /usr/local/bin
-RUN chmod +x /usr/local/bin/fabric-ca-client
+FROM hyperledger/fabric-ca-tools:latest
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl -o /etc/apt/sources.list.d/microsoft.list https://packages.microsoft.com/config/ubuntu/16.04/prod.list
 RUN apt-get update
-RUN apt-get -y install jq
-RUN date
+RUN apt-get install -y powershell
