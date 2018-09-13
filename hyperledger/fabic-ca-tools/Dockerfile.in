@@ -4,4 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 FROM ubuntu:18.04
-RUN /bin/sh -c 'curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && curl -o /etc/apt/sources.list.d/microsoft.list https://packages.microsoft.com/config/ubuntu/18.04/prod.list && apt-get update && apt-get install -y powershell'
+RUN apt-get update
+RUN apt-get install curl
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - 
+RUN curl -o /etc/apt/sources.list.d/microsoft.list https://packages.microsoft.com/config/ubuntu/18.04/prod.list && apt-get update 
+RUN apt-get install -y powershell
